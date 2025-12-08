@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Nikita Paladi — Paladinchik | CV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Paladinchik — рыцарь нового поколения. Начинающий программист и создатель прототипов." />
+
+  <!-- Шрифт под техно-стиль -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-bg: #050608;
+      --color-bg-soft: #0b1015;
+      --color-primary: #d4af37; /* золото */
+      --color-primary-soft: rgba(212, 175, 55, 0.18);
+      --color-accent: #2cff88; /* зелёный неон */
+      --color-text: #f5f5f5;
+      --color-muted: #9ea3af;
+      --border-radius-lg: 18px;
+      --border-radius-xl: 26px;
+      --shadow-soft: 0 18px 45px rgba(0,0,0,0.55);
+      --transition-fast: 0.18s ease-out;
+      --transition-med: 0.28s ease-out;
+      --nav-height: 72px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at 10% 0%, #27391a 0, #050608 40%, #020307 100%);
+      color: var(--color-text);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Глобальные эффекты */
+
+    .noise-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.13;
+      mix-blend-mode: soft-light;
+      background-image: url("images/noise.png"); /* TODO: можешь сюда поставить своё зернистое изображение / текстуру */
+      z-index: 1;
+    }
+
+    .gradient-orbit {
+      position: fixed;
+      width: 60vw;
+      height: 60vw;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.18), transparent 55%),
+        radial-gradient(circle at 60% 40%, rgba(255, 0, 80, 0.4), transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(44, 255, 136, 0.3), transparent 55%);
+      filter: blur(40px);
+      opacity: 0.25;
+      top: -10%;
+      right: -10%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    main {
+      position: relative;
+      z-index: 2;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: calc(var(--nav-height) + 24px) 20px 60px;
+    }
+
+    section {
+      margin-bottom: 72px;
+    }
+
+    .section-label {
+      font-family: "Orbitron", system-ui, sans-serif;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      color: var(--color-accent);
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: "Orbitron", system-ui, sans-serif;
+      font-size: 1.8rem;
+      margin-bottom: 24px;
+    }
+
+    /* HEADER */
+
+    header {
+      position: fixed;
+      inset-inline: 0;
+      top: 0;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(5,6,8,0.96), rgba(5,6,8,0.82), transparent);
+      border-bottom: 1px solid rgba(212,175,55,0.18);
+    }
+
+    .nav-inner {
+      width: 100%;
+      max-width: 1120px;
+      padding-inline: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Orbitron", system-ui, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.75rem;
+    }
+
+    .logo-mark {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #ffffff, var(--color-primary), #050608);
+      box-shadow: 0 0 16px rgba(44, 255, 136, 0.6);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--color-muted);
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    nav a:hover {
+      color: var(--color-text);
+      background: rgba(44,255,136,0.08);
+      transform: translateY(-1px);
+    }
+
+    nav a.active {
+      color: var(--color-bg);
+      background: var(--color-accent);
+    }
+
+    .btn {
+      border-radius: 999px;
+      border: 1px solid rgba(212,175,55,0.75);
+      background: radial-gradient(circle at 30% 0%, rgba(255,255,255,0.14), transparent 60%) #11131a;
+      color: var(--color-primary);
+      padding: 8px 16px;
+      font-size: 0.82rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+      box-shadow: 0 0 0 rgba(212,175,55,0);
+    }
+
+    .btn span {
+      font-family: "Orbitron", system-ui, sans-serif;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      background: radial-gradient(circle at 30% 0%, rgba(255,255,255,0.2), transparent 60%) #151822;
+    }
+
+    .btn-outline {
+      border-color: rgba(44,255,136,0.7);
+      color: var(--color-accent);
+      background: rgba(12, 20, 18, 0.8);
+    }
+
+    .btn-outline:hover {
+      background: rgba(19, 35, 28, 0.95);
+      box-shadow: 0 0 30px rgba(44,255,136,0.3);
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(158,163,175,0.4);
+      background: rgba(5,6,8,0.9);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      width: 18px;
+      height: 1.7px;
+      background: var(--color-text);
+      position: relative;
+    }
+
+    .nav-toggle span::before,
+    .nav-toggle span::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 1.7px;
+      left: 0;
+      background: var(--color-text);
+    }
+
+    .nav-toggle span::before {
+      top: -5px;
+    }
+
+    .nav-toggle span::after {
+      top: 5px;
+    }
+
+    /* HERO */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-family: "Orbitron", system-ui, sans-serif;
+      color: var(--color-accent);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-family: "Orbitron", system-ui, sans-serif;
+      font-size: 2.3rem;
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span {
+      color: var(--color-primary);
+    }
+
+    .hero-subtitle {
+      font-size: 0.98rem;
+      color: var(--color-muted);
+      max-width: 520px;
+      margin-bottom: 18px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+
+    .chip {
+      border-radius: 999px;
+      border: 1px solid rgba(158,163,175,0.4);
+      font-size: 0.7rem;
+      padding: 4px 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-muted);
+      background: rgba(5,6,8,0.85);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-orbit {
+      position: relative;
+      border-radius: var(--border-radius-xl);
+      padding: 22px;
+      background: radial-gradient(circle at 10% 0%, rgba(44,255,136,0.16), transparent 65%) #05070b;
+      border: 1px solid rgba(212,175,55,0.4);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      min-height: 240px;
+    }
+
+    .hero-orbit::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background-image: url("images/palette-bg.jpg"); /* TODO: сюда поставь то изображение, которое ты прислал как референс */
+      background-size: cover;
+      background-position: center;
+      mix-blend-mode: screen;
+      opacity: 0.6;
+      filter: contrast(1.05) saturate(1.2);
+    }
+
+    .hero-orbit-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .hero-avatar {
+      align-self: flex-start;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(5,6,8,0.9);
+      border: 1px solid rgba(212,175,55,0.6);
+      font-size: 0.74rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .avatar-circle {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 25%, #ffffff, var(--color-primary), #050608);
+      box-shadow: 0 0 16px rgba(212,175,55,0.6);
+    }
+
+    .hero-orbit-caption {
+      font-size: 0.78rem;
+      color: var(--color-text);
+      max-width: 230px;
+    }
+
+    .hero-orbit-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 10px;
+      margin-top: 18px;
+      font-size: 0.7rem;
+      color: var(--color-muted);
+    }
+
+    /* ABOUT */
+
+    .card {
+      background: radial-gradient(circle at 10% 0%, rgba(44,255,136,0.12), transparent 60%) #05070b;
+      border-radius: var(--border-radius-lg);
+      border: 1px solid rgba(212,175,55,0.18);
+      padding: 20px 18px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .about-text {
+      font-size: 0.95rem;
+      color: var(--color-muted);
+      line-height: 1.6;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .about-meta-list {
+      list-style: none;
+      font-size: 0.85rem;
+      color: var(--color-muted);
+    }
+
+    .about-meta-list li + li {
+      margin-top: 6px;
+    }
+
+    .about-meta-label {
+      color: var(--color-text);
+    }
+
+    /* SKILLS */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: rgba(5,6,8,0.9);
+      border-radius: var(--border-radius-lg);
+      border: 1px solid rgba(158,163,175,0.35);
+      padding: 16px 14px;
+      font-size: 0.87rem;
+      transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med), background var(--transition-med);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 10% 0%, rgba(212,175,55,0.18), transparent 60%);
+      opacity: 0;
+      transition: opacity var(--transition-med);
+      pointer-events: none;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(212,175,55,0.8);
+      background: rgba(10,12,18,0.98);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.75);
+    }
+
+    .skill-card:hover::before {
+      opacity: 1;
+    }
+
+    .skill-title {
+      font-family: "Orbitron", system-ui, sans-serif;
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: var(--color-primary);
+    }
+
+    .skill-meta {
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 6px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .skill-tag {
+      font-size: 0.7rem;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid rgba(158,163,175,0.4);
+      color: var(--color-muted);
+    }
+
+    /* PROJECTS */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      background: rgba(5,6,8,0.96);
+      border-radius: var(--border-radius-lg);
+      border: 1px solid rgba(212,175,55,0.16);
+      padding: 16px 15px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition-med), box-shadow var(--transition-med), border-color var(--transition-med);
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(212,175,55,0.75);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .project-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      color: var(--color-accent);
+      text-transform: uppercase;
+    }
+
+    .project-title {
+      font-family: "Orbitron", system-ui, sans-serif;
+      font-size: 1rem;
+    }
+
+    .project-desc {
+      font-size: 0.85rem;
+      color: var(--color-muted);
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 6px;
+      font-size: 0.78rem;
+      color: var(--color-muted);
+    }
+
+    .project-link {
+      font-size: 0.78rem;
+      color: var(--color-accent);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    /* GALLERY */
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 1px solid rgba(212,175,55,0.35);
+      background: #050608;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+      transition: transform var(--transition-med), filter var(--transition-med), opacity var(--transition-med);
+    }
+
+    .gallery-item::after {
+      content: "zoom";
+      position: absolute;
+      right: 8px;
+      bottom: 6px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-text);
+      background: rgba(5,6,8,0.78);
+      padding: 3px 8px;
+      border-radius: 999px;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+      filter: saturate(1.1);
+      opacity: 0.9;
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery-empty-note {
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: var(--color-muted);
+    }
+
+    /* MODAL */
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 20;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--transition-med), visibility var(--transition-med);
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-image-wrap {
+      max-width: 90vw;
+      max-height: 80vh;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(212,175,55,0.6);
+      box-shadow: 0 32px 64px rgba(0,0,0,0.9);
+      background: #050608;
+    }
+
+    .modal-image-wrap img {
+      display: block;
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+
+    .modal-close {
+      position: fixed;
+      top: 18px;
+      right: 22px;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(158,163,175,0.7);
+      background: rgba(5,6,8,0.9);
+      color: var(--color-text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* CONTACTS */
+
+    .contacts-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.2fr);
+      gap: 20px;
+    }
+
+    .contact-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--color-muted);
+    }
+
+    .contact-list li + li {
+      margin-top: 8px;
+    }
+
+    .contact-label {
+      color: var(--color-text);
+      font-size: 0.87rem;
+    }
+
+    .contact-link {
+      color: var(--color-accent);
+      text-decoration: none;
+      font-size: 0.87rem;
+    }
+
+    .contact-link:hover {
+      text-decoration: underline;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 10px;
+      font-size: 0.85rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .field label {
+      color: var(--color-muted);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .field input,
+    .field textarea {
+      border-radius: 11px;
+      border: 1px solid rgba(158,163,175,0.5);
+      background: rgba(5,6,8,0.96);
+      color: var(--color-text);
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: 0.86rem;
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: rgba(212,175,55,0.9);
+      background: #070910;
+      box-shadow: 0 0 0 1px rgba(212,175,55,0.4);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    footer {
+      max-width: 1120px;
+      margin: 0 auto 24px;
+      padding-inline: 20px;
+      font-size: 0.78rem;
+      color: var(--color-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    footer span {
+      opacity: 0.8;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .hero-orbit {
+        order: -1;
+      }
+      .skills-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .projects-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .contacts-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      nav ul {
+        position: absolute;
+        top: var(--nav-height);
+        right: 0;
+        left: 0;
+        padding: 10px 20px 14px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        background: rgba(5,6,8,0.98);
+        border-bottom: 1px solid rgba(212,175,55,0.22);
+        transform-origin: top;
+        transform: scaleY(0.6);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--transition-med), transform var(--transition-med);
+      }
+
+      nav ul.open {
+        opacity: 1;
+        transform: scaleY(1);
+        pointer-events: auto;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 420px) {
+      .skills-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .gallery-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="gradient-orbit"></div>
+<div class="noise-overlay"></div>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="logo-mark"></div>
+      <span>Paladinchik</span>
+    </div>
+
+    <button class="nav-toggle" aria-label="Toggle navigation">
+      <span></span>
+    </button>
+
+    <nav>
+      <ul>
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+        <li><a href="#contacts" class="nav-link">Contacts</a></li>
+      </ul>
+    </nav>
+
+    <a href="#" class="btn" title="You can later link your PDF CV here">
+      <span>Download CV</span>
+    </a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section id="hero" class="hero">
+  <div>
+    <div class="hero-kicker">Paladinchik — knight of a new generation</div>
+    <h1 class="hero-title">
+      Nikita Paladi<br>
+      <span>building websites and prototypes</span>
+    </h1>
+    <p class="hero-subtitle">
+      Junior developer focused on web development and AI tools. I enjoy turning ideas into
+      working prototypes and clean, modern websites with a tech-inspired style.
+    </p>
+
+    <div class="hero-tags">
+      <span class="chip">Web development</span>
+      <span class="chip">AI tools</span>
+      <span class="chip">Prototyping</span>
+      <span class="chip">Portfolio / CV</span>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#projects" class="btn">
+        <span>View projects</span>
+      </a>
+      <a href="#contacts" class="btn btn-outline">
+        <span>Contact me</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-orbit">
+    <div class="hero-orbit-inner">
+      <div class="hero-avatar">
+        <div class="avatar-circle"></div>
+        <div>
+          <div style="font-size:0.8rem;">Nikita Paladi</div>
+          <div style="font-size:0.7rem; color:var(--color-muted);">aka Paladinchik</div>
+        </div>
+      </div>
+
+      <p class="hero-orbit-caption">
+        This website is my live CV and portfolio. I will keep updating it with new projects,
+        AI experiments and prototypes as I grow as a developer.
+      </p>
+
+      <div class="hero-orbit-meta">
+        <span>focus: web + AI tools</span>
+        <span>v0.1 — skeleton mode</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- ABOUT -->
+  <section id="about">
+  <div class="section-label">Section 01</div>
+  <h2 class="section-title">About me</h2>
+
+  <div class="card">
+    <p class="about-text">
+      Motivated and responsible 25-year-old with a strong interest in sports and an active
+      lifestyle, including table tennis, cycling and mountain hiking. Possess well-developed
+      teamwork abilities, attention to detail and adaptability in dynamic environments.
+      Experienced in working with social media platforms and artificial intelligence tools,
+      with solid foundational knowledge of PC use and digital technologies.
+    </p>
+
+    <p class="about-text" style="margin-top: 14px;">
+      I am currently looking for an entry-level position or internship where I can grow in
+      web development and in the practical use of AI tools. I am open to learning from more
+      experienced colleagues, taking on new challenges and contributing to real projects
+      while continuously improving my skills.
+    </p>
+
+    <div class="about-grid">
+      <ul class="about-meta-list">
+        <li><span class="about-meta-label">Name:</span> Nikita Paladi</li>
+        <li><span class="about-meta-label">Nickname:</span> Paladinchik</li>
+        <li><span class="about-meta-label">Focus:</span> websites, AI tools, prototypes</li>
+        <li><span class="about-meta-label">Format:</span> CV & portfolio</li>
+      </ul>
+
+      <ul class="about-meta-list">
+        <li><span class="about-meta-label">Status:</span> junior-level developer</li>
+        <li><span class="about-meta-label">Interests:</span> games, prototyping, technology</li>
+        <li><span class="about-meta-label">Languages:</span> Russian / English / Romanian</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-label">Section 02</div>
+    <h2 class="section-title">Навыки</h2>
+
+    <div class="skills-grid">
+      <article class="skill-card">
+        <div class="skill-meta">core · web</div>
+        <h3 class="skill-title">Создание сайтов</h3>
+        <p>Одностраничные сайты, лендинги и визитки. Адаптивная верстка и аккуратный код.</p>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">JavaScript</span>
+        </div>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-meta">assist · ai</div>
+        <h3 class="skill-title">Работа с AI Tools</h3>
+        <p>Использую ИИ для генерации идей, кода, дизайна и ускорения разработки.</p>
+        <div class="skill-tags">
+          <span class="skill-tag">ChatGPT</span>
+          <span class="skill-tag">Code Assist</span>
+          <span class="skill-tag">AI Prototyping</span>
+        </div>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-meta">build · proto</div>
+        <h3 class="skill-title">Создание прототипов</h3>
+        <p>Прототипы устройств и интерфейсов. Быстрая проверка идей и улучшений.</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Prototype v3</span>
+          <span class="skill-tag">Hardware + soft</span>
+        </div>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-meta">soft · human</div>
+        <h3 class="skill-title">Коммуникация</h3>
+        <p>Умею обсуждать идею простым языком, собирать требования и предлагать варианты.</p>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-meta">learn · next</div>
+        <h3 class="skill-title">Развитие</h3>
+        <p>Прокачка в JavaScript, фреймворках и более глубокой интеграции AI в проекты.</p>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-meta">meta · tools</div>
+        <h3 class="skill-title">Toolset</h3>
+        <p>Редакторы кода, дизайн-софты и сервисы, которые помогают быстрее доводить проект до результата.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+  <div class="section-label">Section 03</div>
+  <h2 class="section-title">Projects & Work</h2>
+
+  <div class="projects-grid">
+    <!-- Project 1: this site -->
+    <article class="project-card">
+      <div class="project-label">web · cv</div>
+      <h3 class="project-title">Personal portfolio website “Paladinchik”</h3>
+      <p class="project-desc">
+        My personal portfolio and CV website built in a techno-inspired style using a gold and
+        green color palette. Focused on clean structure, responsiveness and a clear presentation
+        of my skills and projects.
+      </p>
+      <div class="project-meta">
+        <span>Stack: HTML · CSS · JavaScript</span>
+        <a class="project-link" href="#hero">View on this page</a>
+      </div>
+    </article>
+
+    <!-- Project 2: TireBuddy website -->
+    <article class="project-card">
+      <div class="project-label">client · web</div>
+      <h3 class="project-title">TireBuddy — mobile tire service website</h3>
+      <p class="project-desc">
+        Website created for TireBuddy, a Canadian mobile tire change and repair service operating
+        across Ontario. The site presents services, pricing and contact options in a clear and
+        user-friendly way, helping customers quickly book on-site tire changes and related services.
+      </p>
+      <div class="project-meta">
+        <span>Client: TireBuddy (Canada)</span>
+        <a class="project-link" href="https://tirebuddy.ca/" target="_blank" rel="noopener">
+          Visit tirebuddy.ca
+        </a>
+      </div>
+    </article>
+
+    <!-- Project 3: AI-assisted web concepts -->
+    <article class="project-card">
+      <div class="project-label">ai · web</div>
+      <h3 class="project-title">AI-assisted website concepts</h3>
+      <p class="project-desc">
+        A set of small website concepts where I experiment with combining classic front-end
+        development and AI tools. The goal is to speed up layout, content generation and UX ideas,
+        and to build working prototypes as quickly as possible.
+      </p>
+      <div class="project-meta">
+        <span>Type: practice & experiments</span>
+        <span>Tools: ChatGPT & others</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <div class="section-label">Section 04</div>
+    <h2 class="section-title">Галерея</h2>
+
+    <div class="gallery-grid">
+      <!-- TODO: просто замени src на свои изображения -->
+      <div class="gallery-item">
+        <img src="images/gallery-1.jpg" alt="Работа или прототип 1">
+      </div>
+      <div class="gallery-item">
+        <img src="images/gallery-2.jpg" alt="Работа или прототип 2">
+      </div>
+      <div class="gallery-item">
+        <img src="images/gallery-3.jpg" alt="Работа или прототип 3">
+      </div>
+      <div class="gallery-item">
+        <img src="images/gallery-4.jpg" alt="Работа или прототип 4">
+      </div>
+      <div class="gallery-item">
+        <img src="images/gallery-5.jpg" alt="Работа или прототип 5">
+      </div>
+      <div class="gallery-item">
+        <img src="images/gallery-6.jpg" alt="Работа или прототип 6">
+      </div>
+    </div>
+
+    <p class="gallery-empty-note">
+      Позже сюда можно добавить реальные фото: прототипы, скрины сайтов, кадры с видео и т.д.
+    </p>
+  </section>
+
+  <!-- CONTACTS -->
+  <section id="contacts">
+  <div class="section-label">Section 05</div>
+  <h2 class="section-title">Contacts</h2>
+
+  <div class="contacts-layout">
+    <!-- CONTACT INFO -->
+    <div class="card">
+      <ul class="contact-list">
+        <li>
+          <span class="contact-label">Email:</span><br>
+          <a href="mailto:paladi.nikita2000@gmail.com" class="contact-link">
+            paladi.nikita2000@gmail.com
+          </a>
+        </li>
+
+        <li>
+          <span class="contact-label">Telegram:</span><br>
+          <a href="https://t.me/paladinchik" class="contact-link" target="_blank" rel="noopener">
+            @paladinchik
+          </a>
+        </li>
+
+        <li>
+          <span class="contact-label">GitHub:</span><br>
+          <a href="https://github.com/Paladinchik2000" class="contact-link" target="_blank" rel="noopener">
+            github.com/Paladinchik2000
+          </a>
+        </li>
+
+        <li>
+          <span class="contact-label">YouTube:</span><br>
+          <a href="https://www.youtube.com/@paladinchik2000" class="contact-link" target="_blank" rel="noopener">
+            youtube.com/@paladinchik2000
+          </a>
+        </li>
+
+        <li>
+          <span class="contact-label">Location:</span><br>
+          <span>Open to remote opportunities</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- CONTACT FORM -->
+    <div class="card">
+      <form
+        class="contact-form"
+        onsubmit="event.preventDefault(); alert('This form is a placeholder for now. Later it can be connected to email or a form service.');"
+      >
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="How should I address you?">
+        </div>
+
+        <div class="field">
+          <label for="contact">Contact</label>
+          <input id="contact" name="contact" type="text" placeholder="Email or Telegram for reply">
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Briefly describe your idea, project or collaboration request"
+          ></textarea>
+        </div>
+
+        <button class="btn" type="submit">
+          <span>Send message</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- MODAL для галереи -->
+<div class="modal-backdrop" id="modal">
+  <button class="modal-close" aria-label="Закрыть">×</button>
+  <div class="modal-image-wrap">
+    <img id="modal-image" src="" alt="Просмотр изображения">
+  </div>
+</div>
+
+<script>
+  // Год в футере
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Мобильное меню
+  const navToggle = document.querySelector(".nav-toggle");
+  const navList = document.querySelector("nav ul");
+  navToggle.addEventListener("click", () => {
+    navList.classList.toggle("open");
+  });
+  navList.addEventListener("click", (e) => {
+    if (e.target.matches(".nav-link")) {
+      navList.classList.remove("open");
+    }
+  });
+
+  // Подсветка активной секции
+  const navLinks = document.querySelectorAll(".nav-link");
+  const sections = Array.from(document.querySelectorAll("main section"));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navLinks.forEach(link => {
+          link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+        });
+      }
+    });
+  }, { rootMargin: "-50% 0px -50% 0px", threshold: 0.1 });
+
+  sections.forEach(section => observer.observe(section));
+
+  // Галерея: модальное окно
+  const modal = document.getElementById("modal");
+  const modalImage = document.getElementById("modal-image");
+  const galleryItems = document.querySelectorAll(".gallery-item img");
+
+  galleryItems.forEach(img => {
+    img.addEventListener("click", () => {
+      modalImage.src = img.src;
+      modal.classList.add("active");
+    });
+  });
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal || e.target.classList.contains("modal-close")) {
+      modal.classList.remove("active");
+      modalImage.src = "";
+    }
+  });
+</script>
+
+</body>
+</html>
