@@ -1,21 +1,27 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Nikita Paladi — Paladinchik | CV</title>
+  <title>Nikita Paladi — Paladinchik | Portfolio & CV</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Paladinchik — рыцарь нового поколения. Начинающий программист и создатель прототипов." />
+  <meta
+    name="description"
+    content="Junior developer and prototype creator. Web development, AI tools and practical projects by Nikita Paladi (Paladinchik)."
+  />
 
-  <!-- Шрифт под техно-стиль -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Techno-style fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
     :root {
       --color-bg: #050608;
       --color-bg-soft: #0b1015;
-      --color-primary: #d4af37; /* золото */
+      --color-primary: #d4af37; /* gold */
       --color-primary-soft: rgba(212, 175, 55, 0.18);
-      --color-accent: #2cff88; /* зелёный неон */
+      --color-accent: #2cff88; /* neon green */
       --color-text: #f5f5f5;
       --color-muted: #9ea3af;
       --border-radius-lg: 18px;
@@ -40,7 +46,7 @@
       scroll-behavior: smooth;
     }
 
-    /* Глобальные эффекты */
+    /* Global effects */
 
     .noise-overlay {
       position: fixed;
@@ -48,7 +54,7 @@
       pointer-events: none;
       opacity: 0.13;
       mix-blend-mode: soft-light;
-      background-image: url("images/noise.png"); /* TODO: можешь сюда поставить своё зернистое изображение / текстуру */
+      background-image: url("images/noise.png"); /* Optional: your noise texture */
       z-index: 1;
     }
 
@@ -318,7 +324,7 @@
       content: "";
       position: absolute;
       inset: -40%;
-      background-image: url("images/palette-bg.jpg"); /* TODO: сюда поставь то изображение, которое ты прислал как референс */
+      background-image: url("images/palette-bg.jpg"); /* put your style reference image here */
       background-size: cover;
       background-position: center;
       mix-blend-mode: screen;
@@ -358,7 +364,7 @@
     .hero-orbit-caption {
       font-size: 0.78rem;
       color: var(--color-text);
-      max-width: 230px;
+      max-width: 260px;
     }
 
     .hero-orbit-meta {
@@ -369,9 +375,10 @@
       margin-top: 18px;
       font-size: 0.7rem;
       color: var(--color-muted);
+      text-transform: lowercase;
     }
 
-    /* ABOUT */
+    /* CARD */
 
     .card {
       background: radial-gradient(circle at 10% 0%, rgba(44,255,136,0.12), transparent 60%) #05070b;
@@ -380,6 +387,8 @@
       padding: 20px 18px;
       box-shadow: var(--shadow-soft);
     }
+
+    /* ABOUT */
 
     .about-text {
       font-size: 0.95rem;
@@ -475,6 +484,93 @@
       padding: 3px 7px;
       border-radius: 999px;
       border: 1px solid rgba(158,163,175,0.4);
+      color: var(--color-muted);
+    }
+
+    /* TECH STACK */
+
+    .tech-stack {
+      margin-bottom: 64px;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .tech-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(158,163,175,0.45);
+      background: rgba(5,6,8,0.9);
+      box-shadow: 0 10px 26px rgba(0,0,0,0.55);
+    }
+
+    .tech-icon {
+      min-width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(212,175,55,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-family: "Orbitron", system-ui, sans-serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      background: radial-gradient(circle at 30% 0%, rgba(255,255,255,0.16), transparent 60%) #05070b;
+    }
+
+    .tech-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      font-size: 0.82rem;
+    }
+
+    .tech-text strong {
+      font-weight: 600;
+    }
+
+    .tech-text span {
+      color: var(--color-muted);
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+
+    /* CV SECTION */
+
+    .cv-section {
+      margin-bottom: 72px;
+    }
+
+    .cv-list {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      font-size: 0.9rem;
+      color: var(--color-muted);
+      line-height: 1.5;
+    }
+
+    .cv-list li + li {
+      margin-top: 4px;
+    }
+
+    .cv-actions {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .cv-note {
+      font-size: 0.8rem;
       color: var(--color-muted);
     }
 
@@ -808,6 +904,16 @@
       }
     }
 
+    @media (max-width: 640px) {
+      .tech-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .tech-item {
+        border-radius: 16px;
+      }
+    }
+
     @media (max-width: 420px) {
       .skills-grid {
         grid-template-columns: minmax(0, 1fr);
@@ -839,13 +945,16 @@
         <li><a href="#hero" class="nav-link active">Home</a></li>
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#stack" class="nav-link">Tech stack</a></li>
+        <li><a href="#cv" class="nav-link">CV</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#gallery" class="nav-link">Gallery</a></li>
         <li><a href="#contacts" class="nav-link">Contacts</a></li>
       </ul>
     </nav>
 
-    <a href="#" class="btn" title="You can later link your PDF CV here">
+    <!-- Scrolls to CV section -->
+    <a href="#cv" class="btn" title="Scroll to CV section">
       <span>Download CV</span>
     </a>
   </div>
@@ -854,105 +963,105 @@
 <main>
   <!-- HERO -->
   <section id="hero" class="hero">
-  <div>
-    <div class="hero-kicker">Paladinchik — knight of a new generation</div>
-    <h1 class="hero-title">
-      Nikita Paladi<br>
-      <span>building websites and prototypes</span>
-    </h1>
-    <p class="hero-subtitle">
-      Junior developer focused on web development and AI tools. I enjoy turning ideas into
-      working prototypes and clean, modern websites with a tech-inspired style.
-    </p>
-
-    <div class="hero-tags">
-      <span class="chip">Web development</span>
-      <span class="chip">AI tools</span>
-      <span class="chip">Prototyping</span>
-      <span class="chip">Portfolio / CV</span>
-    </div>
-
-    <div class="hero-actions">
-      <a href="#projects" class="btn">
-        <span>View projects</span>
-      </a>
-      <a href="#contacts" class="btn btn-outline">
-        <span>Contact me</span>
-      </a>
-    </div>
-  </div>
-
-  <div class="hero-orbit">
-    <div class="hero-orbit-inner">
-      <div class="hero-avatar">
-        <div class="avatar-circle"></div>
-        <div>
-          <div style="font-size:0.8rem;">Nikita Paladi</div>
-          <div style="font-size:0.7rem; color:var(--color-muted);">aka Paladinchik</div>
-        </div>
-      </div>
-
-      <p class="hero-orbit-caption">
-        This website is my live CV and portfolio. I will keep updating it with new projects,
-        AI experiments and prototypes as I grow as a developer.
+    <div>
+      <div class="hero-kicker">Paladinchik — knight of a new generation</div>
+      <h1 class="hero-title">
+        Nikita Paladi<br>
+        <span>building websites and prototypes</span>
+      </h1>
+      <p class="hero-subtitle">
+        Junior developer focused on web development and AI tools. I enjoy turning ideas into
+        working prototypes and clean, modern websites with a tech-inspired style.
       </p>
 
-      <div class="hero-orbit-meta">
-        <span>focus: web + AI tools</span>
-        <span>v0.1 — skeleton mode</span>
+      <div class="hero-tags">
+        <span class="chip">Web development</span>
+        <span class="chip">AI tools</span>
+        <span class="chip">Prototyping</span>
+        <span class="chip">Portfolio / CV</span>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn">
+          <span>View projects</span>
+        </a>
+        <a href="#contacts" class="btn btn-outline">
+          <span>Contact me</span>
+        </a>
       </div>
     </div>
-  </div>
-</section>
+
+    <div class="hero-orbit">
+      <div class="hero-orbit-inner">
+        <div class="hero-avatar">
+          <div class="avatar-circle"></div>
+          <div>
+            <div style="font-size:0.8rem;">Nikita Paladi</div>
+            <div style="font-size:0.7rem; color:var(--color-muted);">aka Paladinchik</div>
+          </div>
+        </div>
+
+        <p class="hero-orbit-caption">
+          This website is my live CV and portfolio. I will keep updating it with new projects,
+          AI experiments and prototypes as I grow as a developer.
+        </p>
+
+        <div class="hero-orbit-meta">
+          <span>focus: web + ai tools</span>
+          <span>v0.1 — evolving</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ABOUT -->
   <section id="about">
-  <div class="section-label">Section 01</div>
-  <h2 class="section-title">About me</h2>
+    <div class="section-label">Section 01</div>
+    <h2 class="section-title">About me</h2>
 
-  <div class="card">
-    <p class="about-text">
-      Motivated and responsible 25-year-old with a strong interest in sports and an active
-      lifestyle, including table tennis, cycling and mountain hiking. Possess well-developed
-      teamwork abilities, attention to detail and adaptability in dynamic environments.
-      Experienced in working with social media platforms and artificial intelligence tools,
-      with solid foundational knowledge of PC use and digital technologies.
-    </p>
+    <div class="card">
+      <p class="about-text">
+        Motivated and responsible 25-year-old with a strong interest in sports and an active
+        lifestyle, including table tennis, cycling and mountain hiking. Possess well-developed
+        teamwork abilities, attention to detail and adaptability in dynamic environments.
+        Experienced in working with social media platforms and artificial intelligence tools,
+        with solid foundational knowledge of PC use and digital technologies.
+      </p>
 
-    <p class="about-text" style="margin-top: 14px;">
-      I am currently looking for an entry-level position or internship where I can grow in
-      web development and in the practical use of AI tools. I am open to learning from more
-      experienced colleagues, taking on new challenges and contributing to real projects
-      while continuously improving my skills.
-    </p>
+      <p class="about-text" style="margin-top: 14px;">
+        I am currently looking for an entry-level position or internship where I can grow in
+        web development and in the practical use of AI tools. I am open to learning from more
+        experienced colleagues, taking on new challenges and contributing to real projects
+        while continuously improving my skills.
+      </p>
 
-    <div class="about-grid">
-      <ul class="about-meta-list">
-        <li><span class="about-meta-label">Name:</span> Nikita Paladi</li>
-        <li><span class="about-meta-label">Nickname:</span> Paladinchik</li>
-        <li><span class="about-meta-label">Focus:</span> websites, AI tools, prototypes</li>
-        <li><span class="about-meta-label">Format:</span> CV & portfolio</li>
-      </ul>
+      <div class="about-grid">
+        <ul class="about-meta-list">
+          <li><span class="about-meta-label">Name:</span> Nikita Paladi</li>
+          <li><span class="about-meta-label">Nickname:</span> Paladinchik</li>
+          <li><span class="about-meta-label">Focus:</span> websites, AI tools, prototypes</li>
+          <li><span class="about-meta-label">Format:</span> CV & portfolio</li>
+        </ul>
 
-      <ul class="about-meta-list">
-        <li><span class="about-meta-label">Status:</span> junior-level developer</li>
-        <li><span class="about-meta-label">Interests:</span> games, prototyping, technology</li>
-        <li><span class="about-meta-label">Languages:</span> Russian / English / Romanian</li>
-      </ul>
+        <ul class="about-meta-list">
+          <li><span class="about-meta-label">Status:</span> junior-level developer</li>
+          <li><span class="about-meta-label">Interests:</span> games, prototyping, technology</li>
+          <li><span class="about-meta-label">Languages:</span> Russian / English / Romanian</li>
+        </ul>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- SKILLS -->
   <section id="skills">
     <div class="section-label">Section 02</div>
-    <h2 class="section-title">Навыки</h2>
+    <h2 class="section-title">Skills</h2>
 
     <div class="skills-grid">
       <article class="skill-card">
         <div class="skill-meta">core · web</div>
-        <h3 class="skill-title">Создание сайтов</h3>
-        <p>Одностраничные сайты, лендинги и визитки. Адаптивная верстка и аккуратный код.</p>
+        <h3 class="skill-title">Website creation</h3>
+        <p>One-page websites, landing pages and portfolio pages with responsive layout and clean code.</p>
         <div class="skill-tags">
           <span class="skill-tag">HTML</span>
           <span class="skill-tag">CSS</span>
@@ -962,223 +1071,313 @@
 
       <article class="skill-card">
         <div class="skill-meta">assist · ai</div>
-        <h3 class="skill-title">Работа с AI Tools</h3>
-        <p>Использую ИИ для генерации идей, кода, дизайна и ускорения разработки.</p>
+        <h3 class="skill-title">Working with AI tools</h3>
+        <p>Using AI for idea generation, code assistance, content and design support to speed up development.</p>
         <div class="skill-tags">
           <span class="skill-tag">ChatGPT</span>
-          <span class="skill-tag">Code Assist</span>
-          <span class="skill-tag">AI Prototyping</span>
+          <span class="skill-tag">Code assist</span>
+          <span class="skill-tag">AI prototyping</span>
         </div>
       </article>
 
       <article class="skill-card">
         <div class="skill-meta">build · proto</div>
-        <h3 class="skill-title">Создание прототипов</h3>
-        <p>Прототипы устройств и интерфейсов. Быстрая проверка идей и улучшений.</p>
+        <h3 class="skill-title">Prototyping</h3>
+        <p>Prototypes of devices and interfaces. Fast testing of ideas and improvements.</p>
         <div class="skill-tags">
           <span class="skill-tag">Prototype v3</span>
-          <span class="skill-tag">Hardware + soft</span>
+          <span class="skill-tag">Hardware + software</span>
         </div>
       </article>
 
       <article class="skill-card">
-        <div class="skill-meta">soft · human</div>
-        <h3 class="skill-title">Коммуникация</h3>
-        <p>Умею обсуждать идею простым языком, собирать требования и предлагать варианты.</p>
+        <div class="skill-meta">soft · communication</div>
+        <h3 class="skill-title">Communication</h3>
+        <p>Explaining ideas in simple language, collecting requirements and suggesting options.</p>
       </article>
 
       <article class="skill-card">
-        <div class="skill-meta">learn · next</div>
-        <h3 class="skill-title">Развитие</h3>
-        <p>Прокачка в JavaScript, фреймворках и более глубокой интеграции AI в проекты.</p>
+        <div class="skill-meta">learn · growth</div>
+        <h3 class="skill-title">Continuous learning</h3>
+        <p>Improving JavaScript, frameworks and deeper AI integration into projects.</p>
       </article>
 
       <article class="skill-card">
         <div class="skill-meta">meta · tools</div>
         <h3 class="skill-title">Toolset</h3>
-        <p>Редакторы кода, дизайн-софты и сервисы, которые помогают быстрее доводить проект до результата.</p>
+        <p>Code editors, design tools and services that help deliver projects faster.</p>
       </article>
+    </div>
+  </section>
+
+  <!-- TECH STACK -->
+  <section id="stack" class="tech-stack">
+    <div class="section-label">Extra</div>
+    <h2 class="section-title">Tech stack & tools</h2>
+
+    <p class="about-text" style="margin-bottom: 18px;">
+      I work with a small but growing stack focused on clean front-end and practical use of AI tools
+      in development and prototyping.
+    </p>
+
+    <div class="tech-grid">
+      <div class="tech-item">
+        <div class="tech-icon">HTML</div>
+        <div class="tech-text">
+          <strong>HTML5</strong>
+          <span>Semantic structure, clean markup for landing pages and CV websites.</span>
+        </div>
+      </div>
+
+      <div class="tech-item">
+        <div class="tech-icon">CSS</div>
+        <div class="tech-text">
+          <strong>CSS3</strong>
+          <span>Responsive layouts, flexbox/grid, modern, minimal and techno-inspired styles.</span>
+        </div>
+      </div>
+
+      <div class="tech-item">
+        <div class="tech-icon">JS</div>
+        <div class="tech-text">
+          <strong>JavaScript</strong>
+          <span>Interactive elements, simple animations and dynamic behavior on the page.</span>
+        </div>
+      </div>
+
+      <div class="tech-item">
+        <div class="tech-icon">AI</div>
+        <div class="tech-text">
+          <strong>AI tools</strong>
+          <span>Using AI for ideas, code assistance, content, design support and prototypes.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CV SECTION -->
+  <section id="cv" class="cv-section">
+    <div class="section-label">CV</div>
+    <h2 class="section-title">Download CV</h2>
+
+    <div class="card">
+      <p class="about-text">
+        Here you can download my CV as a PDF file. It includes a short profile, education, key skills,
+        work and project experience, as well as contact information and links to my online profiles.
+      </p>
+
+      <ul class="cv-list">
+        <li>Short personal summary and key strengths.</li>
+        <li>Core skills: web development, AI tools and prototyping.</li>
+        <li>Project experience, including commercial work like the TireBuddy website.</li>
+        <li>Education, additional courses (if applicable) and interests.</li>
+        <li>Contact details and links to GitHub and YouTube.</li>
+      </ul>
+
+      <div class="cv-actions">
+        <!--
+          TODO: attach your CV PDF:
+
+          1. Create a folder named "files" next to this index.html.
+          2. Put your CV file inside, e.g.: "Nikita_Paladi_CV.pdf".
+          3. Make sure the link below points to the correct file name and path.
+        -->
+        <a href="files/Nikita_Paladi_CV.pdf" class="btn" download>
+          <span>Download PDF</span>
+        </a>
+        <a href="files/Nikita_Paladi_CV.pdf" class="btn btn-outline" target="_blank" rel="noopener">
+          <span>Open in new tab</span>
+        </a>
+
+        <span class="cv-note">
+          If the button does not work yet, please make sure the PDF file is uploaded to the server.
+        </span>
+      </div>
     </div>
   </section>
 
   <!-- PROJECTS -->
   <section id="projects">
-  <div class="section-label">Section 03</div>
-  <h2 class="section-title">Projects & Work</h2>
+    <div class="section-label">Section 03</div>
+    <h2 class="section-title">Projects & work</h2>
 
-  <div class="projects-grid">
-    <!-- Project 1: this site -->
-    <article class="project-card">
-      <div class="project-label">web · cv</div>
-      <h3 class="project-title">Personal portfolio website “Paladinchik”</h3>
-      <p class="project-desc">
-        My personal portfolio and CV website built in a techno-inspired style using a gold and
-        green color palette. Focused on clean structure, responsiveness and a clear presentation
-        of my skills and projects.
-      </p>
-      <div class="project-meta">
-        <span>Stack: HTML · CSS · JavaScript</span>
-        <a class="project-link" href="#hero">View on this page</a>
-      </div>
-    </article>
+    <div class="projects-grid">
+      <!-- Project 1: this site -->
+      <article class="project-card">
+        <div class="project-label">web · cv</div>
+        <h3 class="project-title">Personal portfolio website “Paladinchik”</h3>
+        <p class="project-desc">
+          My personal portfolio and CV website built in a techno-inspired style using a gold and
+          green color palette. Focused on clean structure, responsiveness and a clear presentation
+          of my skills and projects.
+        </p>
+        <div class="project-meta">
+          <span>Stack: HTML · CSS · JavaScript</span>
+          <a class="project-link" href="#hero">View on this page</a>
+        </div>
+      </article>
 
-    <!-- Project 2: TireBuddy website -->
-    <article class="project-card">
-      <div class="project-label">client · web</div>
-      <h3 class="project-title">TireBuddy — mobile tire service website</h3>
-      <p class="project-desc">
-        Website created for TireBuddy, a Canadian mobile tire change and repair service operating
-        across Ontario. The site presents services, pricing and contact options in a clear and
-        user-friendly way, helping customers quickly book on-site tire changes and related services.
-      </p>
-      <div class="project-meta">
-        <span>Client: TireBuddy (Canada)</span>
-        <a class="project-link" href="https://tirebuddy.ca/" target="_blank" rel="noopener">
-          Visit tirebuddy.ca
-        </a>
-      </div>
-    </article>
+      <!-- Project 2: TireBuddy website -->
+      <article class="project-card">
+        <div class="project-label">client · web</div>
+        <h3 class="project-title">TireBuddy — mobile tire service website</h3>
+        <p class="project-desc">
+          Website created for TireBuddy, a Canadian mobile tire change and repair service operating
+          across Ontario. The site presents services, pricing and contact options in a clear and
+          user-friendly way, helping customers quickly book on-site tire changes and related services.
+        </p>
+        <div class="project-meta">
+          <span>Client: TireBuddy (Canada)</span>
+          <a class="project-link" href="https://tirebuddy.ca/" target="_blank" rel="noopener">
+            Visit tirebuddy.ca
+          </a>
+        </div>
+      </article>
 
-    <!-- Project 3: AI-assisted web concepts -->
-    <article class="project-card">
-      <div class="project-label">ai · web</div>
-      <h3 class="project-title">AI-assisted website concepts</h3>
-      <p class="project-desc">
-        A set of small website concepts where I experiment with combining classic front-end
-        development and AI tools. The goal is to speed up layout, content generation and UX ideas,
-        and to build working prototypes as quickly as possible.
-      </p>
-      <div class="project-meta">
-        <span>Type: practice & experiments</span>
-        <span>Tools: ChatGPT & others</span>
-      </div>
-    </article>
-  </div>
-</section>
+      <!-- Project 3: AI-assisted concepts -->
+      <article class="project-card">
+        <div class="project-label">ai · web</div>
+        <h3 class="project-title">AI-assisted website concepts</h3>
+        <p class="project-desc">
+          A set of small website concepts where I experiment with combining classic front-end
+          development and AI tools. The goal is to speed up layout, content generation and UX ideas,
+          and to build working prototypes as quickly as possible.
+        </p>
+        <div class="project-meta">
+          <span>Type: practice & experiments</span>
+          <span>Tools: ChatGPT & others</span>
+        </div>
+      </article>
+    </div>
+  </section>
 
   <!-- GALLERY -->
   <section id="gallery">
     <div class="section-label">Section 04</div>
-    <h2 class="section-title">Галерея</h2>
+    <h2 class="section-title">Gallery</h2>
 
     <div class="gallery-grid">
-      <!-- TODO: просто замени src на свои изображения -->
       <div class="gallery-item">
-        <img src="images/gallery-1.jpg" alt="Работа или прототип 1">
+        <img src="images/gallery-tirebuddy1.png" alt="TireBuddy website homepage">
       </div>
       <div class="gallery-item">
-        <img src="images/gallery-2.jpg" alt="Работа или прототип 2">
+        <img src="images/gallery-tirebuddy2.png" alt="TireBuddy website secondary page">
       </div>
       <div class="gallery-item">
-        <img src="images/gallery-3.jpg" alt="Работа или прототип 3">
+        <img src="images/gallery-3.jpg" alt="Project preview 3">
       </div>
       <div class="gallery-item">
-        <img src="images/gallery-4.jpg" alt="Работа или прототип 4">
+        <img src="images/gallery-4.jpg" alt="Project preview 4">
       </div>
       <div class="gallery-item">
-        <img src="images/gallery-5.jpg" alt="Работа или прототип 5">
+        <img src="images/gallery-5.jpg" alt="Project preview 5">
       </div>
       <div class="gallery-item">
-        <img src="images/gallery-6.jpg" alt="Работа или прототип 6">
+        <img src="images/gallery-6.jpg" alt="Project preview 6">
       </div>
     </div>
 
     <p class="gallery-empty-note">
-      Позже сюда можно добавить реальные фото: прототипы, скрины сайтов, кадры с видео и т.д.
+      This gallery will be expanded with more screenshots and photos of my projects, prototypes and future work.
     </p>
   </section>
 
   <!-- CONTACTS -->
   <section id="contacts">
-  <div class="section-label">Section 05</div>
-  <h2 class="section-title">Contacts</h2>
+    <div class="section-label">Section 05</div>
+    <h2 class="section-title">Contacts</h2>
 
-  <div class="contacts-layout">
-    <!-- CONTACT INFO -->
-    <div class="card">
-      <ul class="contact-list">
-        <li>
-          <span class="contact-label">Email:</span><br>
-          <a href="mailto:paladi.nikita2000@gmail.com" class="contact-link">
-            paladi.nikita2000@gmail.com
-          </a>
-        </li>
+    <div class="contacts-layout">
+      <!-- CONTACT INFO -->
+      <div class="card">
+        <ul class="contact-list">
+          <li>
+            <span class="contact-label">Email:</span><br>
+            <a href="mailto:paladi.nikita2000@gmail.com" class="contact-link">
+              paladi.nikita2000@gmail.com
+            </a>
+          </li>
 
-        <li>
-          <span class="contact-label">Telegram:</span><br>
-          <a href="https://t.me/paladinchik" class="contact-link" target="_blank" rel="noopener">
-            @paladinchik
-          </a>
-        </li>
+          <li>
+            <span class="contact-label">Telegram:</span><br>
+            <a href="https://t.me/paladinchik" class="contact-link" target="_blank" rel="noopener">
+              @paladinchik
+            </a>
+          </li>
 
-        <li>
-          <span class="contact-label">GitHub:</span><br>
-          <a href="https://github.com/Paladinchik2000" class="contact-link" target="_blank" rel="noopener">
-            github.com/Paladinchik2000
-          </a>
-        </li>
+          <li>
+            <span class="contact-label">GitHub:</span><br>
+            <a href="https://github.com/Paladinchik2000" class="contact-link" target="_blank" rel="noopener">
+              github.com/Paladinchik2000
+            </a>
+          </li>
 
-        <li>
-          <span class="contact-label">YouTube:</span><br>
-          <a href="https://www.youtube.com/@paladinchik2000" class="contact-link" target="_blank" rel="noopener">
-            youtube.com/@paladinchik2000
-          </a>
-        </li>
+          <li>
+            <span class="contact-label">YouTube:</span><br>
+            <a href="https://www.youtube.com/@paladinchik2000" class="contact-link" target="_blank" rel="noopener">
+              youtube.com/@paladinchik2000
+            </a>
+          </li>
 
-        <li>
-          <span class="contact-label">Location:</span><br>
-          <span>Open to remote opportunities</span>
-        </li>
-      </ul>
+          <li>
+            <span class="contact-label">Location:</span><br>
+            <span>Open to remote opportunities</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CONTACT FORM -->
+      <div class="card">
+        <form
+          class="contact-form"
+          onsubmit="event.preventDefault(); alert('This form is a placeholder for now. Later it can be connected to email or a form service.');"
+        >
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" placeholder="How should I address you?">
+          </div>
+
+          <div class="field">
+            <label for="contact">Contact</label>
+            <input id="contact" name="contact" type="text" placeholder="Email or Telegram for reply">
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Briefly describe your idea, project or collaboration request"
+            ></textarea>
+          </div>
+
+          <button class="btn" type="submit">
+            <span>Send message</span>
+          </button>
+        </form>
+      </div>
     </div>
+  </section>
+</main>
 
-    <!-- CONTACT FORM -->
-    <div class="card">
-      <form
-        class="contact-form"
-        onsubmit="event.preventDefault(); alert('This form is a placeholder for now. Later it can be connected to email or a form service.');"
-      >
-        <div class="field">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" placeholder="How should I address you?">
-        </div>
+<footer>
+  <span>© <span id="year"></span> Nikita Paladi · Paladinchik.</span>
+  <span>Portfolio v0.1 — more projects coming soon.</span>
+</footer>
 
-        <div class="field">
-          <label for="contact">Contact</label>
-          <input id="contact" name="contact" type="text" placeholder="Email or Telegram for reply">
-        </div>
-
-        <div class="field">
-          <label for="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            placeholder="Briefly describe your idea, project or collaboration request"
-          ></textarea>
-        </div>
-
-        <button class="btn" type="submit">
-          <span>Send message</span>
-        </button>
-      </form>
-    </div>
-  </div>
-</section>
-
-
-<!-- MODAL для галереи -->
+<!-- MODAL for gallery -->
 <div class="modal-backdrop" id="modal">
-  <button class="modal-close" aria-label="Закрыть">×</button>
+  <button class="modal-close" aria-label="Close">×</button>
   <div class="modal-image-wrap">
-    <img id="modal-image" src="" alt="Просмотр изображения">
+    <img id="modal-image" src="" alt="Gallery image preview">
   </div>
 </div>
 
 <script>
-  // Год в футере
+  // Year in footer
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // Мобильное меню
+  // Mobile menu
   const navToggle = document.querySelector(".nav-toggle");
   const navList = document.querySelector("nav ul");
   navToggle.addEventListener("click", () => {
@@ -1190,29 +1389,32 @@
     }
   });
 
-  // Подсветка активной секции
+  // Active section highlight
   const navLinks = document.querySelectorAll(".nav-link");
   const sections = Array.from(document.querySelectorAll("main section"));
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const id = entry.target.id;
-        navLinks.forEach(link => {
-          link.classList.toggle("active", link.getAttribute("href") === "#" + id);
-        });
-      }
-    });
-  }, { rootMargin: "-50% 0px -50% 0px", threshold: 0.1 });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach((link) => {
+            link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+          });
+        }
+      });
+    },
+    { rootMargin: "-50% 0px -50% 0px", threshold: 0.1 }
+  );
 
-  sections.forEach(section => observer.observe(section));
+  sections.forEach((section) => observer.observe(section));
 
-  // Галерея: модальное окно
+  // Gallery modal
   const modal = document.getElementById("modal");
   const modalImage = document.getElementById("modal-image");
   const galleryItems = document.querySelectorAll(".gallery-item img");
 
-  galleryItems.forEach(img => {
+  galleryItems.forEach((img) => {
     img.addEventListener("click", () => {
       modalImage.src = img.src;
       modal.classList.add("active");
